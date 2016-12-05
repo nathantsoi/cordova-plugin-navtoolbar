@@ -1,0 +1,28 @@
+{
+  "name": "cordova-plugin-navtoolbar",
+  "version": "0.0.1",
+  "description": "Cordova Simple Navigation Toolbar",
+  "cordova": {
+    "id": "cordova-plugin-navtoolbar",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dogbull/cordova-plugin-navtoolbar.git"
+  },
+  "keywords": [
+    "cordova",
+    "toolbar",
+    "navigation",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "ParkJooHyeon",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/dogbull/cordova-plugin-navtoolbar/issues"
+  },
+  "homepage": "https://github.com/dogbull/cordova-plugin-navtoolbar#readme"
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-navtoolbar" version="0.0.1">
+    <name>NavToolbar</name>
+    <description>Cordova Simple Navigation Toolbar</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,toolbar,navigation</keywords>
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="NavToolbar">
+                <param name="ios-package" value="NavToolbar"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/NavToolbar.h" />
+        <source-file src="src/ios/NavToolbar.m" />
+        <resource-file src="res/ToolbarAssets.xcassets" />
+    </platform>
+</plugin>
