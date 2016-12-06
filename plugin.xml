@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-navtoolbar" version="0.0.1">
+        id="cordova-plugin-navtoolbar" version="0.0.2">
     <name>NavToolbar</name>
     <description>Cordova Simple Navigation Toolbar</description>
     <license>Apache 2.0</license>

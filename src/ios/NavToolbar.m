@@ -7,6 +7,7 @@
 //
 
 #import "NavToolbar.h"
+#import <Cordova/CDVViewController.h>
 
 
 @implementation NavToolbar
@@ -34,11 +35,31 @@
     UIBarButtonItem* space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:@selector(barButtonPressed:)];
     
     self->btnRefresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(barButtonPressed:)];
+    self->btnRefresh.tag = 1;
     self->btnLeft = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left.png"] style:UIBarButtonItemStylePlain target:self action:@selector(barButtonPressed:)];
     self->btnRight = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"right.png"] style:UIBarButtonItemStylePlain target:self action:@selector(barButtonPressed:)];
     
     [toolbar setItems:[[NSArray alloc] initWithObjects:self->btnLeft, space, self->btnRight, space,space, self->btnRefresh, nil]];
     [self.viewController.view addSubview:toolbar];
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    longPress.minimumPressDuration = 3.0;
+    
+    [[[toolbar subviews] objectAtIndex:2] addGestureRecognizer:longPress];
+}
+
+-(void)longPress:(UILongPressGestureRecognizer*)gesture{
+    if( gesture.state == UIGestureRecognizerStateBegan ){
+        CDVViewController* vc = (CDVViewController*)self.viewController;
+        NSString* startPage = [vc startPage];
+        NSURL* url = [NSURL URLWithString:startPage];
+        NSURLRequest* req = [NSURLRequest requestWithURL:url];
+        
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        UIWebView* v = (UIWebView*)self.webView;
+        
+        [v loadRequest:req];
+    }
 }
 
 - (void) recvNoti:(NSNotification *) notification
